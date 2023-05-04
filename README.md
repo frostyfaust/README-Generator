@@ -2,7 +2,7 @@
 
 ## Description
 
-This README generator is application that works through the user's terminal, utilizing Node.js and Inquirer, to help build a professional README.md file for the users' desired repo.
+This README generator is an application that works through the user's terminal, utilizing Node.js and Inquirer, to help build a professional README.md file for the users' desired repo.
 
 ## Mock Video
 
