@@ -1,8 +1,8 @@
-// TODO: Include packages needed for this application
+//packages requirered for this application
 const inquirer = require('inquirer');
 const fs = require('fs');
 const genMarkdown = require('./utils/generateMarkdown.js');
-// TODO: Create an array of questions for user input
+// Array of questions for user input
 const questions = [{
     type: 'input',
     name: 'username',
@@ -56,17 +56,17 @@ const questions = [{
     }
   }
   },
-//confirm whether or not there is a installation process first
+//first confirms if there is an installation process
 {
   type: 'confirm',
   name: 'confirmInstall',
-  message: 'Is there an installation process for this project?'
+  message: 'Will there be an installation process for your project?'
   },
 {
   type: 'input',
   name: 'install',
   message: 'Please write a list of instructions for your installation process.',
-  // only prompts this question if the user confirms that there is an install process.
+  // this question is only prompted when the user confirms that there will be an installation process.
   when: ({confirmInstall}) => {
     if (confirmInstall) {
       return true;
@@ -78,12 +78,12 @@ const questions = [{
 { 
   type: 'confirm',
   name: 'confirmUsage',
-  message: 'Would you like to offer up instructions for using your new application?'
+  message: 'Would you like to offer up instructions on how to use your new application?'
 },
 { 
   type: 'input',
   name: 'usageInstructions',
-  message: 'Please list instructions for using your application. It is recommended to add descriptive images later as well.',
+  message: 'Please list the instructions on how to properly use your application. It is strongly recommended that to add a mock video or picture of your application later on.',
   when: ({ confirmUsage }) => {
     if (confirmUsage) {
       return true;
@@ -92,7 +92,7 @@ const questions = [{
     }
   }
 },
-{ //checkbox that allows license choice
+{ //Provides a list of licenses user can chose from
     type: 'list',
     name: 'license',
     message: 'Please choose a license for your repo.',
@@ -129,13 +129,13 @@ const questions = [{
 {
     type: 'input',
     name: 'test', 
-    message: 'What command is used to run tests?',
-    default: 'npm test'
+    message: 'If you have any commands that are used to test this application, please provide them here.',
+    default: 'N/A'
 },
 {
   type: 'input',
   name: 'questions',
-  message: 'Your github username and email will be already rendered. write a message to any developers that want to contact you.',
+  message: 'Your Github username and email will be already rendered. write a message to any developers that want to contact you.',
   validate: nameInput => {
     if (nameInput) {
       return true;
@@ -145,7 +145,7 @@ const questions = [{
   }
 }];
 
-// TODO: Create a function to write README file
+// Function to write README file
 function writeToFile(data) {
     inquirer.prompt(data)
     .then(response => {
@@ -155,10 +155,10 @@ function writeToFile(data) {
     })
 }
 
-// TODO: Create a function to initialize app
+// function that initialize app
 function init() {
     writeToFile(questions)
 }
 
-// Function call to initialize app
+// calls init function
 init();
